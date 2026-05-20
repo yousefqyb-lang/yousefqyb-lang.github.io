@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Smiling Friends</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:'Cairo',sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#0d0d0d;
+      color:#fff;
+      overflow-x:hidden;
+      width:100%;
+    }
+
+    img{
+      max-width:100%;
+      height:auto;
+      display:block;
+    }
+
+    a{
+      text-decoration:none;
+    }
+
+    /* HERO */
+
+    .hero{
+      width:100%;
+      min-height:100vh;
+      position:relative;
+      overflow:hidden;
+
+      background:
+      linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45)),
+      linear-gradient(to left,rgba(0,149,255,.30),rgba(0,0,0,.10)),
+      url('https://i.postimg.cc/2y82sXfS/Ipad.jpg');
+
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      width:100%;
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:40px;
+
+      padding:0 120px;
+    }
+
+    .hero-text{
+      max-width:560px;
+      width:100%;
+    }
+
+    .hero-text h1{
+      font-size:clamp(42px,8vw,78px);
+      font-weight:900;
+      margin-bottom:18px;
+      line-height:1.1;
+    }
+
+    .hero-text h2{
+      font-size:clamp(30px,6vw,58px);
+      font-weight:800;
+      margin-bottom:25px;
+      line-height:1.2;
+    }
+
+    .hero-text h3{
+      font-size:clamp(20px,4vw,36px);
+      margin-bottom:35px;
+      font-weight:700;
+    }
+
+    .line{
+      width:100%;
+      height:2px;
+      background:#dadada;
+      margin-bottom:35px;
+    }
+
+    .hero-text p{
+      font-size:clamp(16px,2.2vw,24px);
+      line-height:2;
+      color:#f1f1f1;
+      font-weight:700;
+    }
+
+    .hero-logo{
+      width:100%;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    .hero-logo img{
+      width:min(560px,100%);
+      filter:drop-shadow(0 0 15px rgba(0,0,0,.8));
+    }
+
+    /* BLUE WAVE */
+
+    .wave{
+      position:absolute;
+      bottom:-2px;
+      left:0;
+      width:100%;
+      overflow:hidden;
+      line-height:0;
+      z-index:5;
+    }
+
+    .wave svg{
+      width:calc(100% + 1.3px);
+      height:180px;
+      display:block;
+    }
+
+    .wave .shape-fill{
+      fill:#1166dc;
+    }
+
+    /* SEASON SECTION */
+
+    .season{
+      background:#1166dc;
+      padding:60px 25px 90px;
+      width:100%;
+    }
+
+    .season-title{
+      text-align:center;
+      font-size:clamp(38px,7vw,85px);
+      font-weight:900;
+      margin-bottom:45px;
+      line-height:1.2;
+    }
+
+    .episodes{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px;
+      width:100%;
+    }
+
+    .card{
+      overflow:hidden;
+      background:#000;
+      transition:.35s;
+      cursor:pointer;
+      border-radius:12px;
+      width:100%;
+    }
+
+    .card:hover{
+      transform:translateY(-8px);
+    }
+
+    .card img{
+      width:100%;
+      aspect-ratio:16/9;
+      object-fit:cover;
+      display:block;
+    }
+
+    .card-title{
+      background:#0057d8;
+      text-align:center;
+      padding:10px;
+      font-size:clamp(15px,2vw,18px);
+      font-weight:700;
+    }
+
+    /* SCROLLBAR */
+
+    ::-webkit-scrollbar{
+      width:10px;
+    }
+
+    ::-webkit-scrollbar-thumb{
+      background:#1166dc;
+    }
+
+    ::-webkit-scrollbar-track{
+      background:#111;
+    }
+
+    /* RESPONSIVE */
+
+    @media(max-width:1200px){
+
+      .hero-content{
+        padding:60px;
+      }
+
+    }
+
+    @media(max-width:900px){
+
+      .hero{
+        min-height:auto;
+        padding:80px 0 160px;
+      }
+
+      .hero-content{
+        min-height:auto;
+        flex-direction:column-reverse;
+        justify-content:center;
+        gap:50px;
+        text-align:center;
+        padding:0 30px;
+      }
+
+      .hero-text{
+        max-width:100%;
+      }
+
+      .line{
+        margin-inline:auto;
+      }
+
+    }
+
+    @media(max-width:700px){
+
+      .hero{
+        padding:80px 0 140px;
+      }
+
+      .hero-content{
+        padding:0 25px;
+      }
+
+      .hero-logo img{
+        width:280px;
+      }
+
+      .season{
+        padding:50px 18px 70px;
+      }
+
+      .episodes{
+        gap:16px;
+      }
+
+      .wave svg{
+        height:100px;
+      }
+
+    }
+
+    @media(max-width:600px){
+
+      .hero{
+        padding:60px 0 120px;
+      }
+
+      .hero-content{
+        padding:0 18px;
+        gap:30px;
+      }
+
+      .card-title{
+        padding:12px;
+      }
+
+    }
+
+    @media(max-width:350px){
+
+      .hero-text p{
+        line-height:1.9;
+      }
+
+      .season-title{
+        font-size:34px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HERO -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <!-- LOGO -->
+
+      <div class="hero-logo">
+
+        <img
+        src=""
+        alt="Adventure Time">
+
+      </div>
+
+      <!-- TEXT -->
+
+      <div class="hero-text">
+
+        <h1>Smiling Friends</h1>
+
+        <h2>Smiling Friends</h2>
+
+        <h3>- ثلاثة مواسم مترجمة</h3>
+
+        <div class="line"></div>
+
+        <p>
+         سمايلج فريندز هو مسلسل رسوم متحركة كوميدي للكبار، تدور أحداثه حول شركة تُدعى “سمايلنج فريندز” تعمل على نشر السعادة ومساعدة الأشخاص الذين يمرون بمشكلات نفسية أو حياتية. يركز المسلسل على الموظفين “بيم” المتفائل واللطيف، و“تشارلي” الأكثر واقعية وتشاؤمًا، أثناء قيامهما بمهام غريبة لإنقاذ الناس من التعاسة بطرق عبثية وغير متوقعة. يتميز العمل بأسلوبه الساخر، والكوميديا السوداء، والرسوم المتنوعة التي تمزج بين التحريك التقليدي والحديث، مما جعله واحدًا من أبرز أعمال الكوميديا الكرتونية الحديثة.
+        </p>
+
+      </div>
+
+    </div>
+
+    <!-- WAVE -->
+
+    <div class="wave">
+
+      <svg viewBox="0 0 500 150" preserveAspectRatio="none">
+
+        <path
+        d="M0.00,49.98 C149.99,150.00 349.20,-49.98 500.00,49.98 L500.00,150.00 L0.00,150.00 Z"
+        class="shape-fill">
+        </path>
+
+      </svg>
+
+    </div>
+
+  </section>
+
+  <!-- SEASON -->
+
+<!-- SEASONS -->
+
+<section class="season">
+
+  <!-- SEASON 1 -->
+
+  <h2 class="season-title">الموسم الأول</h2>
+
+  <div class="episodes">
+
+    <!-- EP 1 -->
+
+    <a href="player.html" class="card">
+      <img src="https://i.postimg.cc/rFprvRKS/vlcsnap-2026-05-17-12h43m35s461.png">
+      <div class="card-title">حلقة 1 - البداية</div>
+    </a>
+
+    <!-- EP 2 -->
+
+    <a href="player2.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 2</div>
+    </a>
+
+    <!-- EP 3 -->
+
+    <a href="player3.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 3</div>
+    </a>
+
+    <!-- EP 4 -->
+
+    <a href="player4.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 4</div>
+    </a>
+
+    <!-- EP 5 -->
+
+    <a href="player5.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 5</div>
+    </a>
+
+    <!-- EP 6 -->
+
+    <a href="player6.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 6</div>
+    </a>
+
+    <!-- EP 7 -->
+
+    <a href="player7.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 7</div>
+    </a>
+
+    <!-- EP 8 -->
+
+    <a href="player8.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 8</div>
+    </a>
+
+    <!-- EP 9 -->
+
+    <a href="player9.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 9</div>
+    </a>
+
+  </div>
+
+  <!-- SEASON 2 -->
+
+  <h2 class="season-title" style="margin-top:90px;">الموسم الثاني</h2>
+
+  <div class="episodes">
+
+    <a href="player10.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 1</div>
+    </a>
+
+    <a href="player11.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 2</div>
+    </a>
+
+    <a href="player12.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 3</div>
+    </a>
+
+    <a href="player13.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 4</div>
+    </a>
+
+    <a href="player14.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 5</div>
+    </a>
+
+    <a href="player15.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 6</div>
+    </a>
+
+    <a href="player16.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 7</div>
+    </a>
+
+    <a href="player17.html" class="card">
+      <img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png">
+      <div class="card-title">حلقة 8</div>
+    </a>
+
+  </div>
+
+  <!-- SEASON 3 -->
+
+  <h2 class="season-title" style="margin-top:90px;">الموسم الثالث</h2>
+
+  <div class="episodes">
+
+    <a href="player18.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 1</div></a>
+
+    <a href="player19.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 2</div></a>
+
+    <a href="player20.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 3</div></a>
+
+    <a href="player21.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 4</div></a>
+
+    <a href="player22.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 5</div></a>
+
+    <a href="player23.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 6</div></a>
+
+    <a href="player24.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 7</div></a>
+
+    <a href="player25.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 8</div></a>
+
+    <a href="player26.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 9</div></a>
+
+    <a href="player27.html" class="card"><img src="https://i.postimg.cc/KY4FbFtf/vlcsnap-2026-05-19-18h18m06s213.png"><div class="card-title">حلقة 10</div></a>
+
+  </div>
+
+</section>
+
+</body>
+</html>
